@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  WeatherAppC4Q
 //
-//  Created by zahid arsalan on 1/7/17.
+//  Created by arsalan on 1/7/17.
 //  Copyright © 2017 appavenge. All rights reserved.
 //
 
@@ -34,13 +34,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
            // print("RESPOOOSSNSEE\(result)")
             
             if let weatherData = result as? Dictionary<String, AnyObject> {
-                if let data = weatherData["response"]![0] as? Dictionary<String, AnyObject> {
+                if let data = weatherData["response"] as? [Dictionary<String, AnyObject>] {
                    // print("RESPOOOSSNSEE\(data)")
         
-                    if let periods = data["periods"] as? [Dictionary<String, AnyObject>] {
+                    if let periods = data[0]["periods"] as? [Dictionary<String, AnyObject>] {
                         
                         if let currentTemp = periods[0]["avgTempF"] as? Double {
-                            self.tempLabel.text = String(currentTemp)
+                            self.tempLabel.text = "\(Int(currentTemp))°"
+                        
+                        }
+                        
+                        if let currentWeatherType = periods[0]["weatherPrimary"] as? String {
+                            self.weatherTypeLabel.text = currentWeatherType
+                        
                         }
                     
                         for dicts in periods{

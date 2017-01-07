@@ -71,11 +71,11 @@
 				9979E9891E21740A00D85EA5 /* ViewController.swift */,
 				9979E99B1E21803E00D85EA5 /* weatherConstants.swift */,
 				9979E99D1E2199A700D85EA5 /* WeatherDataCell.swift */,
+				9979E9991E217DDD00D85EA5 /* WeatherData.swift */,
 				9979E98B1E21740A00D85EA5 /* Main.storyboard */,
 				9979E98E1E21740A00D85EA5 /* Assets.xcassets */,
 				9979E9901E21740A00D85EA5 /* LaunchScreen.storyboard */,
 				9979E9931E21740A00D85EA5 /* Info.plist */,
-				9979E9991E217DDD00D85EA5 /* WeatherData.swift */,
 			);
 			path = WeatherAppC4Q;
 			sourceTree = "<group>";
