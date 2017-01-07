@@ -9,19 +9,11 @@
 import Foundation
 
 class WeatherData {
-    var _currentTemp: String!
     var _minTemp: String!
     var _maxTemp: String!
     var _date: String!
-    var _weatherType: String!
     
-    var currentTemp: String{
-        if _currentTemp == nil {
-            _currentTemp = ""
-        }
-        return _currentTemp
-    }
-    
+
     var minTemp: String {
         if _minTemp == nil {
             _minTemp = ""
@@ -44,13 +36,7 @@ class WeatherData {
         return _date
     }
     
-    var weatherType: String {
-        if _weatherType == nil {
-            _weatherType = ""
-        }
-        return _weatherType
-    }
-
+    
     init(dataDicts: Dictionary<String, AnyObject>){
         if let maxTemp = dataDicts["maxTempF"] as? Double {
             

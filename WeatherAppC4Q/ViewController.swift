@@ -34,27 +34,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
            // print("RESPOOOSSNSEE\(result)")
             
             if let weatherData = result as? Dictionary<String, AnyObject> {
+                
                 if let data = weatherData["response"] as? [Dictionary<String, AnyObject>] {
-                   // print("RESPOOOSSNSEE\(data)")
+                   //print("RESPOOOSSNSEE\(data)")
         
                     if let periods = data[0]["periods"] as? [Dictionary<String, AnyObject>] {
-                        
+                      
+                    //Get the JSON DATA for the the current temperature
                         if let currentTemp = periods[0]["avgTempF"] as? Double {
                             self.tempLabel.text = "\(Int(currentTemp))°"
-                        
                         }
                         
+                   //Get the JSON Data for the weatherType
                         if let currentWeatherType = periods[0]["weatherPrimary"] as? String {
                             self.weatherTypeLabel.text = currentWeatherType
-                        
                         }
                     
+                  //Create dictionaries and add it to the arrays from the JSON Data
                         for dicts in periods{
-                            let forecat = WeatherData(dataDicts: dicts)
-                            self.forecasts.append(forecat)
+                            let forecast = WeatherData(dataDicts: dicts)
+                            self.forecasts.append(forecast)
                             
                             print("WeatherData\(dicts)")
                         }
+                        
                 //Remove Todays forecast
                     self.forecasts.removeFirst()
                         
