@@ -2,7 +2,7 @@
 //  WeatherDataCell.swift
 //  WeatherAppC4Q
 //
-//  Created by zahid arsalan on 1/7/17.
+//  Created by arsalan on 1/7/17.
 //  Copyright © 2017 appavenge. All rights reserved.
 //
 
