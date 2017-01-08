@@ -163,6 +163,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
+    
+    func fahrenheitToCelcius(fah: String) -> String{
+        
+        let celcius = (Double(fah)!-32)*(5/9)
+        
+        let rounded = round(celcius)
+        
+        return String(Int(rounded))
+        
+        
+    }
+    
+    func celciusToFahrenheit(cel: String) -> String {
+        let fahrenheit = (Double(cel)!*(9/5)+32)
+        
+        let rounded = round(fahrenheit)
+        
+        return String(Int(rounded))
+    }
    
 }
 
