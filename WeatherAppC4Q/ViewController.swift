@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var currentWeatherData: WeatherData!
     var forecasts = [WeatherData]()
-    
+    var descriptionArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,19 +48,39 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                    //Get the JSON Data for the weatherType
                         if let currentWeatherType = periods[0]["weatherPrimary"] as? String {
                             self.weatherTypeLabel.text = currentWeatherType
+                            self.imageLabel.backgroundColor = nil
+                            self.imageLabel.image = UIImage(named: currentWeatherType)
                         }
+                    
                     
                   //Create dictionaries and add it to the arrays from the JSON Data
                         for dicts in periods{
+                            
+                          let condition = dicts["weatherPrimary"] as? String
+                            if  condition == "Scattered Blowing Snow" || condition=="Snow" || condition=="Isolated Wintry Mix" {
+                                self.descriptionArray.append("Snow")
+                            }else if  condition=="Rain" || condition=="Scattered Showers" {
+                                self.descriptionArray.append("Rain")
+                            }else {
+                            
+                                if let condition = condition {
+                                    self.descriptionArray.append(condition)
+                                }
+                            }
+                            
+                            
+                            
                             let forecast = WeatherData(dataDicts: dicts)
                             self.forecasts.append(forecast)
                             
                             print("WeatherData\(dicts)")
                         }
                         
+                        print("IMAGEEE_-------\(self.descriptionArray)")
+                 
                 //Remove Todays forecast
                     self.forecasts.removeFirst()
-                        
+                    self.descriptionArray.removeFirst()
                 //Reload the data in the tableView
                     self.tableView.reloadData()
                         
@@ -80,22 +100,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("Count\(forecasts.count)")
         return forecasts.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "forecastCell", for: indexPath) as? WeatherDataCell {
             let forecastData = forecasts[indexPath.row]
             cell.fillCell(forecast: forecastData)
+            cell.forecastImage.image = UIImage(named: descriptionArray[indexPath.row])
             return cell
         }else{
             return WeatherDataCell()
         }
         
-        
     }
-
-
     
 }
 

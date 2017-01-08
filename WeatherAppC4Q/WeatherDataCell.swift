@@ -9,17 +9,26 @@
 import UIKit
 
 class WeatherDataCell: UITableViewCell {
-    @IBOutlet weak var forecastImage: UIStackView!
+    
+    @IBOutlet weak var forecastImage: UIImageView!
     @IBOutlet weak var forecastDate: UILabel!
     @IBOutlet weak var highTemp: UILabel!
     @IBOutlet weak var lowTemp: UILabel!
- 
+    
+   // var descriptinnArray = [String]()
     
     func fillCell(forecast: WeatherData) {
         forecastDate.text = forecast.date
         lowTemp.text = forecast.minTemp
         highTemp.text = forecast.maxTemp
-    
+       // forecastImage.image = UIImage(named: forecast.image)
+        
+        print("IMAGEEE2-------\(forecast.image)")
     }
+        
+    
+
+    
+    
     
 }

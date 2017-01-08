@@ -12,6 +12,7 @@ class WeatherData {
     var _minTemp: String!
     var _maxTemp: String!
     var _date: String!
+    var _image: String!
     
 
     var minTemp: String {
@@ -36,6 +37,15 @@ class WeatherData {
         return _date
     }
     
+    var image: String {
+        if _image == nil {
+            _image = ""
+        }
+        
+        return _image
+    }
+    
+    
     
     init(dataDicts: Dictionary<String, AnyObject>){
         if let maxTemp = dataDicts["maxTempF"] as? Double {
@@ -57,13 +67,12 @@ class WeatherData {
             _date = daysDate
         
         }
-    
+        
+        if let imageName = dataDicts["weatherPrimary"] as? String {
+                _image = imageName
+            
+        }
     }
-    
-
-    
-    
-    
     
     
     
