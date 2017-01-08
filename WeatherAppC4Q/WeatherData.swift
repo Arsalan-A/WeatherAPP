@@ -61,8 +61,9 @@ class WeatherData {
         
         if let date = dataDicts["timestamp"] as? Int {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .long
-            dateFormatter.timeStyle = .none
+            //dateFormatter.dateStyle = .long
+            //dateFormatter.timeStyle = .none
+            dateFormatter.dateFormat = "EEEE"
             let daysDate = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(date)))
             _date = daysDate
         
@@ -74,6 +75,7 @@ class WeatherData {
         }
     }
     
+
     
     
     
